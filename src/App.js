@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.scss';
+import './Styling/App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
 
-      </header>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
