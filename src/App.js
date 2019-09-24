@@ -46,7 +46,7 @@ class App extends Component {
   }
 
 
-  addtoQueue = async (movie) => {
+  addtoQueue = (movie) => {
     fetch(`/users/${this.state.user.id}`, {
       method: 'PUT',
       body: JSON.stringify({ queue: [...this.state.user.queue, movie.id] }),
@@ -70,14 +70,14 @@ class App extends Component {
   }
 
   // { console.log(this.state.movies ? this.state.movies : null) }
+  // { console.log(this.state.user.queue ? this.state.user.queue : null) }
 
   render() {
     return (
       <div className="App">
         <div className="row-1">
-        { console.log(this.state.user.queue ? this.state.user.queue : null) }
           <h2>{this.state.user.first_name ? this.state.user.first_name : "wait"}'s Queue</h2>
-          <MovieQueue />
+          <MovieQueue movies={this.state.movies} user={this.state.user}/>
         </div>
         <div className="row-2">
           <h2>MovieQ Database</h2>

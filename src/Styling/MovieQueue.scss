@@ -6,7 +6,17 @@
   grid-column-gap: 2vw;
 
   width: 80vw;
-  height: 20vw;
+  height: 25vw;
   border: 1px solid;
   margin: 0 auto;
+
+  .movie-thumb {
+    transform: scale(0.8);
+    transform-origin: center;
+
+    .movie-info {
+      display: grid;
+      grid-template-columns: 50% 25% 25%;
+    }
+  }
 }
