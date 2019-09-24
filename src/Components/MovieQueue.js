@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../Styling/MovieQueue.scss';
 
 const MovieQueue = (props) => {
