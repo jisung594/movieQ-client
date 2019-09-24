@@ -21,7 +21,7 @@ const Movie = (props) => {
       <div className="movie-info">
         <h5>{movie.title}</h5>
         <button>More</button>
-        <button onClick={(movie) => addtoQueue(movie)}>Save</button>
+        <button onClick={() => addtoQueue(movie)}>Save</button>
       </div>
     </div>
   )

@@ -47,29 +47,35 @@ class App extends Component {
 
 
   addtoQueue = async (movie) => {
-    const response = await fetch(`/users/${this.state.user.id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ queue: [movie.id] }),
-      // body: this.state.user.queue.length ? JSON.stringify({ queue: [...this.state.user.queue, movie.id] }) : JSON.stringify({ queue: [movie.id] }),
-      headers: new Headers({ 'Content-Type': 'application/json' })
+    fetch(`/users/${this.state.user.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ queue: [...this.state.user.queue, movie.id] }),
+      headers: { 'Content-Type': 'application/json' }
     })
 
-    const body = await response.json()
-
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-
-    return body
+    // const response = await fetch(`/users/${this.state.user.id}`, {
+    //   method: 'PUT',
+    //   body: JSON.stringify({ queue: movie.id }),
+    //   // body: this.state.user.queue.length ? JSON.stringify({ queue: [...this.state.user.queue, movie.id] }) : JSON.stringify({ queue: [movie.id] }),
+    //   headers: { 'Content-Type': 'application/json' }
+    // })
+    //
+    // const body = await response.json()
+    //
+    // if (response.status !== 200) {
+    //   throw Error(body.message)
+    // }
+    //
+    // return body
   }
 
   // { console.log(this.state.movies ? this.state.movies : null) }
-  // { console.log(this.state.user ? this.state.user : null) }
 
   render() {
     return (
       <div className="App">
         <div className="row-1">
+        { console.log(this.state.user.queue ? this.state.user.queue : null) }
           <h2>{this.state.user.first_name ? this.state.user.first_name : "wait"}'s Queue</h2>
           <MovieQueue />
         </div>
