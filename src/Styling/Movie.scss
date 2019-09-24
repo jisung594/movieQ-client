@@ -4,11 +4,47 @@
   width: 10vw;
   height: 25vw;
 
-  img, h5 {
-    margin: 0;
+  // img, h5 {
+  //   margin: 0;
+  // }
+
+  .img-box {
+    // max-width: 100vw;
+    // position: relative;
+    // display: inline-block;
+    // overflow: hidden;
+    // margin: 0;
+
+
+    img {
+      height: 100%;
+      // display: block;
+      // position: absolute;
+      // // min-height: 90%;
+      // // min-width: 90%;
+      // top: 50%;
+      // left: 50%;
+      // min-height: 100%;
+      // min-width: 100%;
+      // transform: translate(-50%, -50%);
+
+    }
   }
 
-  img {
-    
+  .movie-info {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+
+
+    button {
+      width: 100%;
+      height: 3vw;
+    }
+
+    h5 {
+      width: 100%;
+      font-size: 0.9vw;
+      margin: auto;
+    }
   }
 }

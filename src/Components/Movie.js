@@ -2,7 +2,7 @@ import React from 'react';
 import '../Styling/Movie.scss';
 
 const Movie = (props) => {
-  let { movie } = props
+  let { movie, addtoQueue } = props
 
         // id: movie["id"],
         // title: movie["title"],
@@ -15,8 +15,14 @@ const Movie = (props) => {
 
   return (
     <div className="movie-thumb">
-      <img src={movie.img} alt="poster"/>
-      <h5>{movie.title}</h5>
+      <div className="img-box">
+        <img src={movie.img} alt="poster"/>
+      </div>
+      <div className="movie-info">
+        <h5>{movie.title}</h5>
+        <button>More</button>
+        <button onClick={(movie) => addtoQueue(movie)}>Save</button>
+      </div>
     </div>
   )
 }
