@@ -16,7 +16,7 @@ class App extends Component {
 
     this.fetchMovies()
       .then(res => this.setState({
-        users: res
+        movies: res
       }))
       .catch(err => console.log(err))
   }
@@ -28,7 +28,6 @@ class App extends Component {
     if (response.status !== 200) {
       throw Error(body.message)
     }
-
     return body
   }
 
@@ -43,11 +42,12 @@ class App extends Component {
     return body
   }
 
+  // { console.log(this.state.users ? this.state.users : null) }
+  // { console.log(this.state.movies ? this.state.movies : null) }
+
   render() {
     return (
       <div className="App">
-        { console.log(this.state.users ? this.state.users : null) }
-        { console.log(this.state.movies ? this.state.movies : null) }
       </div>
     );
   }
