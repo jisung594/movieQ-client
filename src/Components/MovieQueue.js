@@ -5,8 +5,8 @@ const MovieQueue = (props) => {
   let {  } = props
 
   return (
-    <div>
-
+    <div className="queue-container">
+      <h2>wtf man</h2>
     </div>
   )
 }

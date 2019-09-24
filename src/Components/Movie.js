@@ -14,7 +14,7 @@ const Movie = (props) => {
         // release_date: movie["release_date"]
 
   return (
-    <div>
+    <div className="movie-thumb">
       <img src={movie.img} alt="poster"/>
       <h5>{movie.title}</h5>
     </div>

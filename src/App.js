@@ -5,14 +5,14 @@ import './Styling/App.scss';
 
 class App extends Component {
   state = {
-    users: [],
+    user: {},
     movies: []
   }
 
   componentDidMount(){
     this.fetchUsers()
       .then(res => this.setState({
-        users: res
+        user: res[0]
       }))
       .catch(err => console.log(err))
 
@@ -50,13 +50,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-        
-        </div>
-        <div>
-          <h2>Database</h2>
-          <MovieList movies={this.state.movies}/>
+        <div className="row-1">
+          <h2>{this.state.user.first_name}'s Queue</h2>
           <MovieQueue />
+        </div>
+        <div className="row-2">
+          <h2>MovieQ Database</h2>
+          <MovieList movies={this.state.movies}/>
         </div>
       </div>
     );
