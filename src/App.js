@@ -45,6 +45,12 @@ class App extends Component {
     return body
   }
 
+// *** TO-DO ***
+// -- 'DELETE from queue' function in frontend AND backend
+// -- dragging to UPDATE order of queue
+// -- add restriction (frontend) on the same movie being added to queue TWICE
+
+
 
   addtoQueue = (movie) => {
     fetch(`/users/${this.state.user.id}`, {
@@ -52,21 +58,10 @@ class App extends Component {
       body: JSON.stringify({ queue: [...this.state.user.queue, movie.id] }),
       headers: { 'Content-Type': 'application/json' }
     })
-
-    // const response = await fetch(`/users/${this.state.user.id}`, {
-    //   method: 'PUT',
-    //   body: JSON.stringify({ queue: movie.id }),
-    //   // body: this.state.user.queue.length ? JSON.stringify({ queue: [...this.state.user.queue, movie.id] }) : JSON.stringify({ queue: [movie.id] }),
-    //   headers: { 'Content-Type': 'application/json' }
-    // })
-    //
-    // const body = await response.json()
-    //
-    // if (response.status !== 200) {
-    //   throw Error(body.message)
-    // }
-    //
-    // return body
+      .then(res => res.json())
+      .then(data => this.setState({
+        user: data.product
+      }))
   }
 
   // { console.log(this.state.movies ? this.state.movies : null) }
