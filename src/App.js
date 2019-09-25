@@ -53,15 +53,25 @@ class App extends Component {
 
 
   addtoQueue = (movie) => {
-    fetch(`/users/${this.state.user.id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ queue: [...this.state.user.queue, movie.id] }),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(res => res.json())
-      .then(data => this.setState({
-        user: data.product
+    if (!this.state.user.queue.includes(movie.id)) {
+      fetch(`/users/${this.state.user.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ queue: [...this.state.user.queue, movie.id] }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+    } else {
+      window.alert(`${movie.title} is already in your queue.`)
+    }
+      // .then(res => res.json())
+      // .then(data => this.setState({
+      //   user: data.product
+      // }))
+
+    this.fetchUsers()
+      .then(res => this.setState({
+        user: res
       }))
+      .catch(err => console.log(err))
   }
 
   // { console.log(this.state.movies ? this.state.movies : null) }
