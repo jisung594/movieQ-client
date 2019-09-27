@@ -1,14 +1,14 @@
 import React from 'react';
-import Movie from './Movie';
+import ListItem from './ListItem';
 import '../Styling/MovieList.scss';
 
 const MovieList = (props) => {
-  let { movies, addtoQueue } = props;
+  let { movies, addToQueue } = props;
 
   let movieComponents
   if (movies.length) {
     movieComponents = movies.map(movieObj => {
-      return <Movie key={movieObj.id} movie={movieObj} addtoQueue={addtoQueue}/>
+      return <ListItem key={movieObj.id} movie={movieObj} addToQueue={addToQueue}/>
     })
   }
 

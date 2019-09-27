@@ -1,24 +1,30 @@
 import React from 'react';
-import Movie from './Movie';
+import QueueItem from './QueueItem';
 import '../Styling/MovieQueue.scss';
+import { Droppable } from 'react-beautiful-dnd';
 
 const MovieQueue = (props) => {
   let { movies, user } = props
 
   let userQueue
   if (user.id && movies.length) {
-    userQueue = user.queue.map(movieId => {
+    userQueue = user.queue.map((movieId,index) => {
       let movie = movies.find(movieObj => {
         return movieObj.id === movieId
       })
-      return <Movie key={movie.id} movie={movie} />
+      return <QueueItem key={movie.id} movie={movie} index={movie.title}/>
     })
   }
 
   return (
-    <div className="queue-container">
-      {userQueue}
-    </div>
+    <Droppable droppableId={user.first_name}>
+      {provided => (
+        <div className="queue-container" {...provided.droppableProps} innerRef={provided.innerRef}>
+          {userQueue}
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   )
 }
 

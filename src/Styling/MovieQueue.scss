@@ -1,23 +1,13 @@
 .queue-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
   // grid-template-rows: auto;
   grid-row-gap: 2vw;
   grid-column-gap: 2vw;
 
-  width: 80vw;
+  width: 90vw;
   height: 25vw;
   border: 1px solid;
   margin: 0 auto;
   overflow: scroll;
-
-  .movie-thumb {
-    transform: scale(0.8);
-    transform-origin: center;
-
-    .movie-info {
-      display: grid;
-      grid-template-columns: 50% 25% 25%;
-    }
-  }
 }

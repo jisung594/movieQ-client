@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieList from './Components/MovieList';
 import MovieQueue from './Components/MovieQueue';
 import './Styling/App.scss';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class App extends Component {
   state = {
@@ -48,11 +49,10 @@ class App extends Component {
 // *** TO-DO ***
 // -- 'DELETE from queue' function in frontend AND backend
 // -- dragging to UPDATE order of queue
-// -- add restriction (frontend) on the same movie being added to queue TWICE
 
 
 
-  addtoQueue = (movie) => {
+  addToQueue = (movie) => {
     if (!this.state.user.queue.includes(movie.id)) {
       fetch(`/users/${this.state.user.id}`, {
         method: 'PUT',
@@ -74,21 +74,32 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
-  // { console.log(this.state.movies ? this.state.movies : null) }
-  // { console.log(this.state.user.queue ? this.state.user.queue : null) }
+  deleteFromQueue = () => {
+
+  }
+
+
+  onDragEnd = (result) => {
+    // TODO: reorder queue of movies
+  }
+
 
   render() {
     return (
-      <div className="App">
-        <div className="row-1">
-          <h2>{this.state.user.first_name ? this.state.user.first_name : "wait"}'s Queue</h2>
-          <MovieQueue movies={this.state.movies} user={this.state.user}/>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+
+        <div className="App">
+          <div className="row-1">
+            <h2>{this.state.user.first_name ? this.state.user.first_name : "wait"}'s Queue</h2>
+            <MovieQueue movies={this.state.movies} user={this.state.user}/>
+          </div>
+          <div className="row-2">
+            <h2>MovieQ Database</h2>
+            <MovieList movies={this.state.movies} addToQueue={this.addToQueue}/>
+          </div>
         </div>
-        <div className="row-2">
-          <h2>MovieQ Database</h2>
-          <MovieList movies={this.state.movies} addtoQueue={this.addtoQueue}/>
-        </div>
-      </div>
+
+      </DragDropContext>
     );
   }
 }
