@@ -17,7 +17,7 @@ const QueueItem = (props) => {
   return (
     <Draggable draggableId={movie.title} index={index}>
       {provided => (
-        <div className="queue-item" {...provided.draggableProps} {...provided.dragHandleProps} innerRef={provided.innerRef}>
+        <div className="queue-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
           <div className="img-box">
             <img className={`movie-img-${movie.id}`} src={movie.img} alt="poster"/>
           </div>

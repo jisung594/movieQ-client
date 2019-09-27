@@ -12,14 +12,16 @@ const MovieQueue = (props) => {
       let movie = movies.find(movieObj => {
         return movieObj.id === movieId
       })
-      return <QueueItem key={movie.id} movie={movie} index={movie.title}/>
+      return <QueueItem key={movie.id} movie={movie} index={movie.id}>
+        <h2>WTF</h2>
+        </QueueItem>
     })
   }
 
   return (
-    <Droppable droppableId={user.first_name}>
+    <Droppable droppableId={"what"}>
       {provided => (
-        <div className="queue-container" {...provided.droppableProps} innerRef={provided.innerRef}>
+        <div className="queue-container" {...provided.droppableProps} ref={provided.innerRef}>
           {userQueue}
           {provided.placeholder}
         </div>
